@@ -67,7 +67,7 @@ If ($winbuild -le "17763"){
         (Get-Content $sysrasphone) -replace 'IpInterfaceMetric=0', $rollbackmetric | Set-Content $sysrasphone
 
         #Log the Outcome of script execution
-        $logmetric = (Get-Content '.\rasphone_original - Copy.pbk') | Select-String -Pattern "IpInterfaceMetric=" -SimpleMatch
+        $logmetric = (Get-Content $sysrasphone) | Select-String -Pattern "IpInterfaceMetric=" -SimpleMatch
 
         if ($logmetric -like '*IpInterfaceMetric=0*'){
         Write-EventLog -LogName "Application" -Source "AOVPN" -EventID 3015 -EntryType Error -Message "$sysrasphone `n`n Interface Metric Fix PowerShell script has been executed`n $(foreach ($entry in $logmetric){"`n$($entry)"})" -Category 1 -RawData 10,20
@@ -84,7 +84,7 @@ If ($winbuild -le "17763"){
         (Get-Content $usrrasphone) -replace 'IpInterfaceMetric=0', $rollforwardmetric | Set-Content $usrrasphone
 
         #Log the Outcome of script execution
-        $logmetric = (Get-Content '.\rasphone_original - Copy.pbk') | Select-String -Pattern "IpInterfaceMetric=" -SimpleMatch
+        $logmetric = (Get-Content $usrrasphone) | Select-String -Pattern "IpInterfaceMetric=" -SimpleMatch
 
         if ($logmetric -like '*IpInterfaceMetric=0*'){
         Write-EventLog -LogName "Application" -Source "AOVPN" -EventID 3015 -EntryType Error -Message "$sysrasphone `n`n Interface Metric Fix PowerShell script has been executed`n $(foreach ($entry in $logmetric){"`n$($entry)"})" -Category 1 -RawData 10,20
@@ -100,7 +100,7 @@ If ($winbuild -le "17763"){
         (Get-Content $sysrasphone) -replace 'IpInterfaceMetric=0', $rollforwardmetric | Set-Content $sysrasphone
 
         #Log the Outcome of script execution
-        $logmetric = (Get-Content '.\rasphone_original - Copy.pbk') | Select-String -Pattern "IpInterfaceMetric=" -SimpleMatch
+        $logmetric = (Get-Content $sysrasphone) | Select-String -Pattern "IpInterfaceMetric=" -SimpleMatch
 
         if ($logmetric -like '*IpInterfaceMetric=0*'){
         Write-EventLog -LogName "Application" -Source "AOVPN" -EventID 3015 -EntryType Error -Message "$sysrasphone `n`n Interface Metric Fix PowerShell script has been executed`n $(foreach ($entry in $logmetric){"`n$($entry)"})" -Category 1 -RawData 10,20
